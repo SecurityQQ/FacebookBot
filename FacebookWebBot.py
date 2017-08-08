@@ -129,6 +129,9 @@ class FacebookBot(webdriver.PhantomJS):
         pass_element = self.find_element_by_name("pass")
         pass_element.send_keys(password)
         pass_element.send_keys(Keys.ENTER)
+        """ Bypass facebook OneClick Login """
+        if self.find_element_by_class_name("bi"):
+            self.find_element_by_class_name("bp").click();
         try:
             self.find_element_by_name("xc_message")
             print("Logged in")
